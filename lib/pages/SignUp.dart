@@ -44,7 +44,7 @@ class _SignUpPageState extends State<SignUpPage> {
             emailTextField("Username"),
             emailTextField("Email"),
             // emailTextField("Username2"),
-            emailTextField("Password"),
+            emailTextField1("Password"),
             SizedBox(
               height: 30,
             ),
@@ -91,6 +91,32 @@ class _SignUpPageState extends State<SignUpPage> {
               color: Colors.black87,
               width: 1.5,
             ))),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget emailTextField1(String label) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      child: Column(
+        children: [
+          Text(label),
+          // SizedBox(
+          //   height: 10,
+          // ),
+          TextFormField(
+            // textAlign: TextAlign.center,
+            cursorColor: Color(0xff00A86B),
+
+            decoration: InputDecoration(
+                helperText: "Password must have lenght 8",
+                focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                  color: Colors.black87,
+                  width: 1.5,
+                ))),
           ),
         ],
       ),
