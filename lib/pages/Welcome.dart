@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frenzo/pages/SignUp.dart';
 
 class WelcomePage extends StatefulWidget {
   @override
@@ -66,7 +67,7 @@ class _WelcomePageState extends State<WelcomePage>
           gradient: LinearGradient(
               colors: [
                 Colors.white,
-                Colors.green[200],
+                Colors.green[400],
               ],
               begin: const FractionalOffset(0.0, 1.0),
               end: const FractionalOffset(0.0, 1.0),
@@ -107,15 +108,18 @@ class _WelcomePageState extends State<WelcomePage>
                   SizedBox(
                     height: 20,
                   ),
-                  boxContainer("assets/google.png", "Sign up with Google"),
+                  boxContainer(
+                      "assets/google.png", "Sign up with Google", null),
                   SizedBox(
                     height: 15,
                   ),
-                  boxContainer("assets/facebook1.png", "Sign up with Facebook"),
+                  boxContainer(
+                      "assets/facebook1.png", "Sign up with Facebook", null),
                   SizedBox(
                     height: 15,
                   ),
-                  boxContainer("assets/email2.png", "Sign up with Email"),
+                  boxContainer(
+                      "assets/email2.png", "Sign up with Email", onEmailClick),
                   SizedBox(height: 20),
                   SlideTransition(
                     position: _offsetAnimation1,
@@ -150,27 +154,37 @@ class _WelcomePageState extends State<WelcomePage>
     );
   }
 
-  Widget boxContainer(String path, String text) {
+  void onEmailClick() {
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (context) => SignUpPage(),
+    ));
+  }
+
+  Widget boxContainer(String path, String text, onClick) {
     return SlideTransition(
       position: _offsetAnimation1,
-      child: Container(
-        height: 65,
-        width: MediaQuery.of(context).size.width - 140,
-        child: Card(
-          color: Colors.white,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 8),
-            child: Row(
-              children: [
-                Image.asset(path, width: 25, height: 25),
-                SizedBox(
-                  width: 20,
-                ),
-                Text(
-                  text,
-                  style: TextStyle(fontSize: 16, color: Colors.black87),
-                )
-              ],
+      child: InkWell(
+        onTap: onClick,
+        child: Container(
+          height: 65,
+          width: MediaQuery.of(context).size.width - 140,
+          child: Card(
+            color: Colors.white,
+            child: Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 20.0, vertical: 8),
+              child: Row(
+                children: [
+                  Image.asset(path, width: 25, height: 25),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Text(
+                    text,
+                    style: TextStyle(fontSize: 16, color: Colors.black87),
+                  )
+                ],
+              ),
             ),
           ),
         ),

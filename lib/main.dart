@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frenzo/pages/SignUp.dart';
 import 'package:frenzo/pages/Welcome.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
           Theme.of(context).textTheme,
         ),
       ),
-      home: WelcomePage(),
+      home: SignUpPage(),
     );
   }
 }
