@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import "package:flutter/material.dart";
 
 class SignUpPage extends StatefulWidget {
   SignUpPage({Key key}) : super(key: key);
@@ -8,59 +8,55 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
+  bool vis = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.symmetric(horizontal: 50, vertical: 50),
+        // height: MediaQuery.of(context).size.height,
+        // width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
           gradient: LinearGradient(
-              colors: [
-                Colors.white,
-                Colors.green[200],
-              ],
-              begin: const FractionalOffset(0.0, 1.0),
-              end: const FractionalOffset(0.0, 1.0),
-              stops: [0.0, 1.0],
-              tileMode: TileMode.repeated),
+            colors: [Colors.white, Colors.green[200]],
+            begin: const FractionalOffset(0.0, 1.0),
+            end: const FractionalOffset(0.0, 1.0),
+            stops: [0.0, 1.0],
+            tileMode: TileMode.repeated,
+          ),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // TextFormField
             Text(
               "Sign up with email",
               style: TextStyle(
-                fontWeight: FontWeight.bold,
                 fontSize: 30,
+                fontWeight: FontWeight.bold,
                 letterSpacing: 2,
               ),
             ),
             SizedBox(
               height: 20,
             ),
-            emailTextField("Username"),
-            emailTextField("Email"),
-            // emailTextField("Username2"),
-            emailTextField1("Password"),
+            usernameTextField(),
+            emailTextField(),
+            passwordTextField(),
             SizedBox(
-              height: 30,
+              height: 20,
             ),
             Container(
+              width: 150,
               height: 50,
-              width: 180,
               decoration: BoxDecoration(
-                color: Color(0xff00A86B),
                 borderRadius: BorderRadius.circular(10),
+                color: Color(0xff00A86B),
               ),
               child: Center(
                 child: Text(
-                  "Sign up",
+                  "Sign Up",
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 16,
+                    fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -72,52 +68,68 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 
-  Widget emailTextField(String label) {
+  Widget usernameTextField() {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10.0),
       child: Column(
         children: [
-          Text(label),
-          // SizedBox(
-          //   height: 10,
-          // ),
+          Text("Username"),
           TextFormField(
-            // textAlign: TextAlign.center,
-            cursorColor: Color(0xff00A86B),
-
             decoration: InputDecoration(
-                focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(
-              color: Colors.black87,
-              width: 1.5,
-            ))),
-          ),
+              focusedBorder: UnderlineInputBorder(
+                borderSide: BorderSide(
+                  color: Colors.black,
+                  width: 2,
+                ),
+              ),
+            ),
+          )
         ],
       ),
     );
   }
 
-  Widget emailTextField1(String label) {
+  Widget emailTextField() {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10.0),
       child: Column(
         children: [
-          Text(label),
-          // SizedBox(
-          //   height: 10,
-          // ),
+          Text("Email"),
           TextFormField(
-            // textAlign: TextAlign.center,
-            cursorColor: Color(0xff00A86B),
-
             decoration: InputDecoration(
-                helperText: "Password must have lenght 8",
-                focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(
-                  color: Colors.black87,
-                  width: 1.5,
-                ))),
-          ),
+              focusedBorder: UnderlineInputBorder(
+                borderSide: BorderSide(
+                  color: Colors.black,
+                  width: 2,
+                ),
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget passwordTextField() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10.0),
+      child: Column(
+        children: [
+          Text("Password"),
+          TextFormField(
+            decoration: InputDecoration(
+              helperText: "Password length should have >=8",
+              helperStyle: TextStyle(
+                fontSize: 14,
+              ),
+              focusedBorder: UnderlineInputBorder(
+                borderSide: BorderSide(
+                  color: Colors.black,
+                  width: 2,
+                ),
+              ),
+            ),
+          )
         ],
       ),
     );
