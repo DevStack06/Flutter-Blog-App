@@ -8,8 +8,8 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-  final _globalKey = GlobalKey<FormState>();
-  bool vis = false;
+  bool vis = true;
+  final _globalkey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +26,7 @@ class _SignUpPageState extends State<SignUpPage> {
           ),
         ),
         child: Form(
-          key: _globalKey,
+          key: _globalkey,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -49,8 +49,9 @@ class _SignUpPageState extends State<SignUpPage> {
               ),
               InkWell(
                 onTap: () {
-                  if (_globalKey.currentState.validate()) {
-                    print("validated");
+                  if (_globalkey.currentState.validate()) {
+                    // we will send the data to rest server
+                    print("Validated");
                   }
                 },
                 child: Container(
@@ -88,7 +89,7 @@ class _SignUpPageState extends State<SignUpPage> {
           TextFormField(
             validator: (value) {
               if (value.isEmpty) return "Username can't be empty";
-              // we will also implement
+              // username unique is not
               return null;
             },
             decoration: InputDecoration(
@@ -114,8 +115,7 @@ class _SignUpPageState extends State<SignUpPage> {
           TextFormField(
             validator: (value) {
               if (value.isEmpty) return "Email can't be empty";
-              if (!value.contains("@")) return "Email invalid";
-              // we will also implement
+              if (!value.contains("@")) return "Email is Invalid";
               return null;
             },
             decoration: InputDecoration(
@@ -140,12 +140,20 @@ class _SignUpPageState extends State<SignUpPage> {
           Text("Password"),
           TextFormField(
             validator: (value) {
-              if (value.isEmpty) return "password can't be empty";
-              if (value.length <= 8) return "paasword length shold have >=8";
-              // we will also implement
+              if (value.isEmpty) return "Password can't be empty";
+              if (value.length < 8) return "Password lenght must have >=8";
               return null;
             },
+            obscureText: vis,
             decoration: InputDecoration(
+              suffixIcon: IconButton(
+                icon: Icon(vis ? Icons.visibility_off : Icons.visibility),
+                onPressed: () {
+                  setState(() {
+                    vis = !vis;
+                  });
+                },
+              ),
               helperText: "Password length should have >=8",
               helperStyle: TextStyle(
                 fontSize: 14,
