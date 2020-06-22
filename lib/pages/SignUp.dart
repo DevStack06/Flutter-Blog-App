@@ -1,5 +1,7 @@
 import "package:flutter/material.dart";
 
+import '../NetworkHandler.dart';
+
 class SignUpPage extends StatefulWidget {
   SignUpPage({Key key}) : super(key: key);
 
@@ -10,6 +12,10 @@ class SignUpPage extends StatefulWidget {
 class _SignUpPageState extends State<SignUpPage> {
   bool vis = true;
   final _globalkey = GlobalKey<FormState>();
+  NetworkHandler networkHandler = NetworkHandler();
+  TextEditingController _usernameController = TextEditingController();
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,7 +57,13 @@ class _SignUpPageState extends State<SignUpPage> {
                 onTap: () {
                   if (_globalkey.currentState.validate()) {
                     // we will send the data to rest server
-                    print("Validated");
+                    Map<String, String> data = {
+                      "username": _usernameController.text,
+                      "email": _emailController.text,
+                      "password": _passwordController.text,
+                    };
+                    print(data);
+                    networkHandler.post("/user/register", data);
                   }
                 },
                 child: Container(
@@ -87,6 +99,7 @@ class _SignUpPageState extends State<SignUpPage> {
         children: [
           Text("Username"),
           TextFormField(
+            controller: _usernameController,
             validator: (value) {
               if (value.isEmpty) return "Username can't be empty";
               // username unique is not
@@ -113,6 +126,7 @@ class _SignUpPageState extends State<SignUpPage> {
         children: [
           Text("Email"),
           TextFormField(
+            controller: _emailController,
             validator: (value) {
               if (value.isEmpty) return "Email can't be empty";
               if (!value.contains("@")) return "Email is Invalid";
@@ -139,6 +153,7 @@ class _SignUpPageState extends State<SignUpPage> {
         children: [
           Text("Password"),
           TextFormField(
+            controller: _passwordController,
             validator: (value) {
               if (value.isEmpty) return "Password can't be empty";
               if (value.length < 8) return "Password lenght must have >=8";
