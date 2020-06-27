@@ -16,6 +16,9 @@ class _SignUpPageState extends State<SignUpPage> {
   TextEditingController _usernameController = TextEditingController();
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
+  String errorText;
+  bool validate = false;
+  bool circular = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,8 +57,12 @@ class _SignUpPageState extends State<SignUpPage> {
                 height: 20,
               ),
               InkWell(
-                onTap: () {
-                  if (_globalkey.currentState.validate()) {
+                onTap: () async {
+                  setState(() {
+                    circular = true;
+                  });
+                  await checkUser();
+                  if (_globalkey.currentState.validate() && validate) {
                     // we will send the data to rest server
                     Map<String, String> data = {
                       "username": _usernameController.text,
@@ -63,33 +70,67 @@ class _SignUpPageState extends State<SignUpPage> {
                       "password": _passwordController.text,
                     };
                     print(data);
-                    networkHandler.post("/user/register", data);
+                    await networkHandler.post("/user/register", data);
+                    setState(() {
+                      circular = false;
+                    });
+                  } else {
+                    setState(() {
+                      circular = false;
+                    });
                   }
                 },
-                child: Container(
-                  width: 150,
-                  height: 50,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Color(0xff00A86B),
-                  ),
-                  child: Center(
-                    child: Text(
-                      "Sign Up",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
+                child: circular
+                    ? CircularProgressIndicator()
+                    : Container(
+                        width: 150,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Color(0xff00A86B),
+                        ),
+                        child: Center(
+                          child: Text(
+                            "Sign Up",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                ),
               )
             ],
           ),
         ),
       ),
     );
+  }
+
+  checkUser() async {
+    if (_usernameController.text.length == 0) {
+      setState(() {
+        // circular = false;
+        validate = false;
+        errorText = "Username Can't be empty";
+      });
+    } else {
+      var response = await networkHandler
+          .get("/user/checkUsername/${_usernameController.text}");
+      if (response['Status']) {
+        setState(() {
+          // circular = false;
+          validate = false;
+          errorText = "Username already taken";
+        });
+      } else {
+        setState(() {
+          // circular = false;
+          validate = true;
+        });
+      }
+    }
   }
 
   Widget usernameTextField() {
@@ -100,12 +141,8 @@ class _SignUpPageState extends State<SignUpPage> {
           Text("Username"),
           TextFormField(
             controller: _usernameController,
-            validator: (value) {
-              if (value.isEmpty) return "Username can't be empty";
-              // username unique is not
-              return null;
-            },
             decoration: InputDecoration(
+              errorText: validate ? null : errorText,
               focusedBorder: UnderlineInputBorder(
                 borderSide: BorderSide(
                   color: Colors.black,
