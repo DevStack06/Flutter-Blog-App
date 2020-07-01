@@ -30,6 +30,7 @@ dependencies:
   google_fonts: ^1.1.0
   http: ^0.12.1
   logger: ^0.9.1
+  flutter_facebook_login: ^3.0.0
 
 dev_dependencies:
   flutter_test:
