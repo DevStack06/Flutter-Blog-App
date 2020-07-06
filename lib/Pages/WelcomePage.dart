@@ -5,6 +5,8 @@ import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'SignUpPage.dart';
 import 'package:http/http.dart' as http;
 
+import 'SinInPage.dart';
+
 class WelcomePage extends StatefulWidget {
   @override
   _WelcomePageState createState() => _WelcomePageState();
@@ -141,12 +143,19 @@ class _WelcomePageState extends State<WelcomePage>
                     SizedBox(
                       width: 10,
                     ),
-                    Text(
-                      "Sign In",
-                      style: TextStyle(
-                        color: Colors.green,
-                        fontSize: 17,
-                        fontWeight: FontWeight.bold,
+                    InkWell(
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => SignInPage(),
+                        ));
+                      },
+                      child: Text(
+                        "Sign In",
+                        style: TextStyle(
+                          color: Colors.green,
+                          fontSize: 17,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ],

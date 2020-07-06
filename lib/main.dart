@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:frenzo/pages/SignUp.dart';
-import 'package:frenzo/pages/Welcome.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'Pages/WelcomePage.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,12 +10,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        textTheme: GoogleFonts.openSansTextTheme(
-          Theme.of(context).textTheme,
+        theme: ThemeData(
+          textTheme: GoogleFonts.openSansTextTheme(
+            Theme.of(context).textTheme,
+          ),
         ),
-      ),
-      home: SignUpPage(),
-    );
+        home: WelcomePage());
   }
 }
