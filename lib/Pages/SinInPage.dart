@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:blogapp/Pages/SignUpPage.dart';
 import "package:flutter/material.dart";
 
@@ -15,7 +17,6 @@ class _SignInPageState extends State<SignInPage> {
   final _globalkey = GlobalKey<FormState>();
   NetworkHandler networkHandler = NetworkHandler();
   TextEditingController _usernameController = TextEditingController();
-  TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
   String errorText;
   bool validate = false;
@@ -95,18 +96,45 @@ class _SignInPageState extends State<SignInPage> {
                   height: 30,
                 ),
                 InkWell(
-                  onTap: () async {},
-                  child: circular
-                      ? CircularProgressIndicator()
-                      : Container(
-                          width: 150,
-                          height: 50,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: Color(0xff00A86B),
-                          ),
-                          child: Center(
-                            child: Text(
+                  onTap: () async {
+                    setState(() {
+                      circular = true;
+                    });
+                    Map<String, String> data = {
+                      "username": _usernameController.text,
+                      "password": _passwordController.text,
+                    };
+                    var response =
+                        await networkHandler.post("/user/login", data);
+
+                    if (response.statusCode == 200 ||
+                        response.statusCode == 201) {
+                      Map<String, dynamic> output = json.decode(response.body);
+                      print(output["token"]);
+                      setState(() {
+                        validate = true;
+                        circular = false;
+                      });
+                    } else {
+                      String output = json.decode(response.body);
+                      setState(() {
+                        validate = false;
+                        errorText = output;
+                        circular = false;
+                      });
+                    }
+                  },
+                  child: Container(
+                    width: 150,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Color(0xff00A86B),
+                    ),
+                    child: Center(
+                      child: circular
+                          ? CircularProgressIndicator()
+                          : Text(
                               "Sign In",
                               style: TextStyle(
                                 color: Colors.white,
@@ -114,8 +142,8 @@ class _SignInPageState extends State<SignInPage> {
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                          ),
-                        ),
+                    ),
+                  ),
                 ),
                 // Divider(
                 //   height: 50,
@@ -155,13 +183,9 @@ class _SignInPageState extends State<SignInPage> {
         Text("Password"),
         TextFormField(
           controller: _passwordController,
-          validator: (value) {
-            if (value.isEmpty) return "Password can't be empty";
-            if (value.length < 8) return "Password lenght must have >=8";
-            return null;
-          },
           obscureText: vis,
           decoration: InputDecoration(
+            errorText: validate ? null : errorText,
             suffixIcon: IconButton(
               icon: Icon(vis ? Icons.visibility_off : Icons.visibility),
               onPressed: () {
