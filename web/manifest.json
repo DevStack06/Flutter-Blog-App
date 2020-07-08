@@ -1,6 +1,6 @@
 {
-    "name": "frenzo",
-    "short_name": "frenzo",
+    "name": "blogapp",
+    "short_name": "blogapp",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
