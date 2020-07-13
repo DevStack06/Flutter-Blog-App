@@ -108,7 +108,7 @@ class _SignInPageState extends State<SignInPage> {
                         await networkHandler.post("/user/login", data);
 
                     if (response.statusCode == 200 ||
-                        response.statusCode == 201) {
+                        response.statusCode == 201) {  
                       Map<String, dynamic> output = json.decode(response.body);
                       print(output["token"]);
                       setState(() {
