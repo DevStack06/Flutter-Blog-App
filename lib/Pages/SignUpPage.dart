@@ -71,6 +71,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     };
                     print(data);
                     await networkHandler.post("/user/register", data);
+                    
                     setState(() {
                       circular = false;
                     });
