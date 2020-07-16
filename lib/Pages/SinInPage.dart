@@ -103,6 +103,8 @@ class _SignInPageState extends State<SignInPage> {
                     setState(() {
                       circular = true;
                     });
+
+                    //Login Logic start here
                     Map<String, String> data = {
                       "username": _usernameController.text,
                       "password": _passwordController.text,
@@ -133,6 +135,8 @@ class _SignInPageState extends State<SignInPage> {
                         circular = false;
                       });
                     }
+
+                    // login logic End here
                   },
                   child: Container(
                     width: 150,
