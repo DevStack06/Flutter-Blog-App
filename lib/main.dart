@@ -25,7 +25,7 @@ class _MyAppState extends State<MyApp> {
 
   void checkLogin() async {
     String token = await storage.read(key: "token");
-    if (token != null) {
+    if (token == null) {
       setState(() {
         page = HomePage();
       });
