@@ -78,7 +78,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     var responseRegister =
                         await networkHandler.post("/user/register", data);
 
-                        //Login Logic added here
+                    //Login Logic added here
                     if (responseRegister.statusCode == 200 ||
                         responseRegister.statusCode == 201) {
                       Map<String, String> data = {
