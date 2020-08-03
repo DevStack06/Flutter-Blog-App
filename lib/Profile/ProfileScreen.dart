@@ -89,3 +89,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 }
+
+// Future<http.StreamedResponse> patchImage(String filepath, String url) async {
+//     print(filename);
+//     String token = await storage.read(key: "token");
+//     url = formater(url);
+//     var request = http.MultipartRequest('PATCH', Uri.parse(url));
+//     request.files.add(await http.MultipartFile.fromPath('img', filename));
+//     request.headers.addAll({
+//       "Content-type": "multipart/form-data",
+//       "Authorization": "Bearer $token",
+//     });
+//     print(request.files[0].filename);
+//     var response = await request.send();
+//     return response;
+//   }
