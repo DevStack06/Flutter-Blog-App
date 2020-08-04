@@ -1,6 +1,8 @@
 import 'dart:io';
 
 import 'package:blogapp/NetworkHandler.dart';
+import 'package:blogapp/Pages/HomePage.dart';
+import 'package:blogapp/Screen/HomeScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -13,7 +15,7 @@ class CreatProfile extends StatefulWidget {
 
 class _CreatProfileState extends State<CreatProfile> {
   final networkHandler = NetworkHandler();
-
+  bool circular = false;
   PickedFile _imageFile;
   final _globalkey = GlobalKey<FormState>();
   TextEditingController _name = TextEditingController();
@@ -56,6 +58,9 @@ class _CreatProfileState extends State<CreatProfile> {
             ),
             InkWell(
               onTap: () async {
+                setState(() {
+                  circular = true;
+                });
                 if (_globalkey.currentState.validate()) {
                   Map<String, String> data = {
                     "name": _name.text,
@@ -66,7 +71,28 @@ class _CreatProfileState extends State<CreatProfile> {
                   };
                   var response =
                       await networkHandler.post("/profile/add", data);
-                  print(response.statusCode);
+                  if (response.statusCode == 200 ||
+                      response.statusCode == 201) {
+                    if (_imageFile.path != null) {
+                      var imageResponse = await networkHandler.patchImage(
+                          "/profile/add/image", _imageFile.path);
+                      if (imageResponse.statusCode == 200) {
+                        setState(() {
+                          circular = false;
+                        });
+                        Navigator.of(context).pushAndRemoveUntil(
+                            MaterialPageRoute(builder: (context) => HomePage()),
+                            (route) => false);
+                      }
+                    } else {
+                      setState(() {
+                        circular = false;
+                      });
+                      Navigator.of(context).pushAndRemoveUntil(
+                          MaterialPageRoute(builder: (context) => HomePage()),
+                          (route) => false);
+                    }
+                  }
                 }
               },
               child: Center(
@@ -78,14 +104,16 @@ class _CreatProfileState extends State<CreatProfile> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Center(
-                    child: Text(
-                      "Submit",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                    child: circular
+                        ? CircularProgressIndicator()
+                        : Text(
+                            "Submit",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                   ),
                 ),
               ),
