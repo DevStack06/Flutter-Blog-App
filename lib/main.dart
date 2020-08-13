@@ -1,4 +1,5 @@
 import 'package:blogapp/Pages/HomePage.dart';
+import 'package:blogapp/Profile/MainProfile.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'Pages/LoadingPage.dart';
@@ -45,7 +46,7 @@ class _MyAppState extends State<MyApp> {
           Theme.of(context).textTheme,
         ),
       ),
-      home: page,
+      home: MainProfile(),
     );
   }
 }

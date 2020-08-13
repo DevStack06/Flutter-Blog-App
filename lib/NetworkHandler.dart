@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:logger/logger.dart';
@@ -55,5 +56,10 @@ class NetworkHandler {
 
   String formater(String url) {
     return baseurl + url;
+  }
+
+  NetworkImage getImage(String username) {
+    String url = formater("/uploads//$username.jpg");
+    return NetworkImage(url);
   }
 }
