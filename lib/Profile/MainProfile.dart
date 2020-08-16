@@ -1,3 +1,4 @@
+import 'package:blogapp/Model/profileModel.dart';
 import 'package:blogapp/NetworkHandler.dart';
 import 'package:flutter/material.dart';
 
@@ -9,6 +10,25 @@ class MainProfile extends StatefulWidget {
 }
 
 class _MainProfileState extends State<MainProfile> {
+  bool circular = true;
+  NetworkHandler networkHandler = NetworkHandler();
+  ProfileModel profileModel = ProfileModel();
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    fetchData();
+  }
+
+  void fetchData() async {
+    var response = await networkHandler.get("/profile/getData");
+    setState(() {
+      profileModel = ProfileModel.fromJson(response["data"]);
+      circular = false;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,20 +48,23 @@ class _MainProfileState extends State<MainProfile> {
           ),
         ],
       ),
-      body: ListView(
-        children: <Widget>[
-          head(),
-          Divider(
-            thickness: 0.8,
-          ),
-          otherDetails("About",
-              " I am a balram rathore a fullstack developer also a web and app developer"),
-          otherDetails("Name", "Balram Rathore"),
-          Divider(
-            thickness: 0.8,
-          ),
-        ],
-      ),
+      body: circular
+          ? Center(child: CircularProgressIndicator())
+          : ListView(
+              children: <Widget>[
+                head(),
+                Divider(
+                  thickness: 0.8,
+                ),
+                otherDetails("About", profileModel.about),
+                otherDetails("Name", profileModel.name),
+                otherDetails("Profession", profileModel.profession),
+                otherDetails("DOB", profileModel.DOB),
+                Divider(
+                  thickness: 0.8,
+                ),
+              ],
+            ),
     );
   }
 
@@ -54,17 +77,17 @@ class _MainProfileState extends State<MainProfile> {
           Center(
             child: CircleAvatar(
               radius: 50,
-              backgroundImage: NetworkHandler().getImage("devStack06"),
+              backgroundImage: NetworkHandler().getImage(profileModel.username),
             ),
           ),
           Text(
-            "DevStack06",
+            profileModel.username,
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
           SizedBox(
             height: 10,
           ),
-          Text("App Developer || Full Stack Developer, App and Web Developer")
+          Text(profileModel.titleline)
         ],
       ),
     );
