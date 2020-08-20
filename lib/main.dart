@@ -46,7 +46,7 @@ class _MyAppState extends State<MyApp> {
           Theme.of(context).textTheme,
         ),
       ),
-      home: MainProfile(),
+      home: page,
     );
   }
 }
