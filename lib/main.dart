@@ -1,3 +1,4 @@
+import 'package:blogapp/Blog/addBlog.dart';
 import 'package:blogapp/Pages/HomePage.dart';
 import 'package:blogapp/Profile/MainProfile.dart';
 import 'package:flutter/material.dart';
@@ -46,7 +47,7 @@ class _MyAppState extends State<MyApp> {
           Theme.of(context).textTheme,
         ),
       ),
-      home: page,
+      home: AddBlog(),
     );
   }
 }
