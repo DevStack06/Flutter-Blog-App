@@ -14,7 +14,7 @@
 
 ### This app have following things -:
 
-<h5>1. Welcome Page</h5>
+<h5 style="color:green">1. Welcome Page</h5>
 <img src="https://github.com/DevStack06/images/blob/master/blog-app/welcomePage.png" width="350"></img>
 <br>
 <h5>2. Login Screen </h5>
