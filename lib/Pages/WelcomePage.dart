@@ -99,7 +99,7 @@ class _WelcomePageState extends State<WelcomePage>
               SlideTransition(
                 position: animation1,
                 child: Text(
-                  "Great stories for graet people",
+                  "Great stories for great people",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontWeight: FontWeight.w600,
