@@ -47,7 +47,7 @@ class _MyAppState extends State<MyApp> {
           Theme.of(context).textTheme,
         ),
       ),
-      home: AddBlog(),
+      home: page,
     );
   }
 }
