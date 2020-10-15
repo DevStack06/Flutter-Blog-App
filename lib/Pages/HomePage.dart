@@ -4,6 +4,7 @@ import 'package:blogapp/Screen/HomeScreen.dart';
 import 'package:blogapp/Profile/ProfileScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:blogapp/NetworkHandler.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
@@ -17,6 +18,51 @@ class _HomePageState extends State<HomePage> {
   List<Widget> widgets = [HomeScreen(), ProfileScreen()];
   List<String> titleString = ["Home Page", "Profile Page"];
   final storage = FlutterSecureStorage();
+  NetworkHandler networkHandler = NetworkHandler();
+  String username = "";
+
+  Widget profilePhoto = Container(
+    height: 100,
+    width: 100,
+    decoration: BoxDecoration(
+      color: Colors.black,
+      borderRadius: BorderRadius.circular(50),
+    ),
+  );
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    checkProfile();
+  }
+
+  void checkProfile() async {
+    var response = await networkHandler.get("/profile/checkProfile");
+    setState(() {
+      username = response['username'];
+    });
+    if (response["status"] == true) {
+      setState(() {
+        profilePhoto = CircleAvatar(
+          radius: 50,
+          backgroundImage: NetworkHandler().getImage(response['username']),
+        );
+      });
+    } else {
+      setState(() {
+        profilePhoto = Container(
+          height: 100,
+          width: 100,
+          decoration: BoxDecoration(
+            color: Colors.black,
+            borderRadius: BorderRadius.circular(50),
+          ),
+        );
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,18 +72,11 @@ class _HomePageState extends State<HomePage> {
             DrawerHeader(
               child: Column(
                 children: <Widget>[
-                  Container(
-                    height: 100,
-                    width: 100,
-                    decoration: BoxDecoration(
-                      color: Colors.black,
-                      borderRadius: BorderRadius.circular(50),
-                    ),
-                  ),
+                  profilePhoto,
                   SizedBox(
                     height: 10,
                   ),
-                  Text("@username"),
+                  Text("@$username"),
                 ],
               ),
             ),
