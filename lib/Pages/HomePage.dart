@@ -1,7 +1,9 @@
 import 'package:blogapp/Blog/addBlog.dart';
+import 'package:blogapp/Pages/WelcomePage.dart';
 import 'package:blogapp/Screen/HomeScreen.dart';
 import 'package:blogapp/Profile/ProfileScreen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
@@ -14,7 +16,7 @@ class _HomePageState extends State<HomePage> {
   int currentState = 0;
   List<Widget> widgets = [HomeScreen(), ProfileScreen()];
   List<String> titleString = ["Home Page", "Profile Page"];
-
+  final storage = FlutterSecureStorage();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +42,29 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             ListTile(
-              title: Text("all post"),
+              title: Text("All Post"),
+              trailing: Icon(Icons.launch),
+              onTap: () {},
+            ),
+            ListTile(
+              title: Text("New Story"),
+              trailing: Icon(Icons.add),
+              onTap: () {},
+            ),
+            ListTile(
+              title: Text("Settings"),
+              trailing: Icon(Icons.settings),
+              onTap: () {},
+            ),
+            ListTile(
+              title: Text("Feedback"),
+              trailing: Icon(Icons.feedback),
+              onTap: () {},
+            ),
+            ListTile(
+              title: Text("Logout"),
+              trailing: Icon(Icons.power_settings_new),
+              onTap: logout,
             ),
           ],
         ),
@@ -103,5 +127,13 @@ class _HomePageState extends State<HomePage> {
       ),
       body: widgets[currentState],
     );
+  }
+
+  void logout() async {
+    await storage.delete(key: "token");
+    Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => WelcomePage()),
+        (route) => false);
   }
 }
