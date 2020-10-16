@@ -14,32 +14,46 @@
 
 ### This app have following things -:
 
-<div style="margin:auto">
-<h5 style="color:green" >1. Welcome Page</h5>
-<!-- <img src="https://github.com/DevStack06/images/blob/master/blog-app/welcomePage.png" width="350"></img> -->
-![test1](https://github.com/DevStack06/images/blob/master/blog-app/welcomePage.png)
+<h3 align="center" style="color:green" >1. Welcome Page</h3>
+ <p align="center">
+<img src="https://github.com/DevStack06/images/blob/master/blog-app/welcomePage.png" width="350"></img>
+</p>
 <br>
-<h5>2. Login Screen </h5>
+<h3 align="center" style="color:green" >2. Login Screen</h3>
+ <p align="center">
 <img src="https://github.com/DevStack06/images/blob/master/blog-app/LoginPage.png" width="350"></img>
+</p>
 <br>
-<h5>3. Wrong Username(Error Handling) </h5>
+<h3  align="center" >3. Wrong Username(Error Handling) </h3>
+<p align="center">
 <img src="https://github.com/DevStack06/images/blob/master/blog-app/wrong-username.png" width="350"></img>
+</p>
 <br>
-<h5>4. SignUp Screen </h5>
+<h3  align="center" >4. SignUp Screen</h3>
+<p align="center">
 <img src="https://github.com/DevStack06/images/blob/master/blog-app/SignUpPage.png" width="350"></img>
+</p>
 <br>
-<h5>5. Home Screen (Development Mode)</h5>
+<h3  align="center" >5. Home Screen (Development Mode) </h3>
+<p align="center">
 <img src="https://github.com/DevStack06/images/blob/master/blog-app/homapage.png" width="350"></img>
+</p>
 <br>
-<h5>6. Profile Screen</h5>
+<h3  align="center" >6. Profile Screen </h3>
+<p align="center">
 <img src="https://github.com/DevStack06/images/blob/master/blog-app/profilePage.png" width="350"></img>
-<h5>7. Drawer  </h5>
+</p>
+<br>
+<h3  align="center" >7. Drawer </h3>
+<p align="center">
 <img src="https://github.com/DevStack06/images/blob/master/blog-app/drawer.png" width="350"></img>
+</p>
 <br>
-<h5>8. Add Blog Page  </h5>
+<h3  align="center" >8. Add Blog Page </h3>
+<p align="center">
 <img src="https://github.com/DevStack06/images/blob/master/blog-app/AddBlog.png" width="350"></img>
+</p>
 <br>
-</div>
 
 ### To use this app follow below instructions-:
 
