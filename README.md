@@ -14,7 +14,8 @@
 
 ### This app have following things -:
 
-<h5 style="color:green">1. Welcome Page</h5>
+<div style="margin:auto">
+<h5 style="color:green" >1. Welcome Page</h5>
 <img src="https://github.com/DevStack06/images/blob/master/blog-app/welcomePage.png" width="350"></img>
 <br>
 <h5>2. Login Screen </h5>
@@ -31,9 +32,12 @@
 <br>
 <h5>6. Profile Screen</h5>
 <img src="https://github.com/DevStack06/images/blob/master/blog-app/profilePage.png" width="350"></img>
-<h5>7. Drawer (Development Mode) </h5>
+<h5>7. Drawer  </h5>
 <img src="https://github.com/DevStack06/images/blob/master/blog-app/drawer.png" width="350"></img>
+<h5>8. Add Blog Page  </h5>
+<img src="https://github.com/DevStack06/images/blob/master/blog-app/AddBlog.png" width="350"></img>
 <br>
+</div>
 
 ### To use this app follow below instructions-:
 
