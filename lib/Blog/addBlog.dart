@@ -1,3 +1,4 @@
+import 'package:blogapp/CustumWidget/OverlayCard.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -31,11 +32,23 @@ class _AddBlogState extends State<AddBlog> {
             }),
         actions: <Widget>[
           FlatButton(
-              onPressed: null,
-              child: Text(
-                "Preview",
-                style: TextStyle(fontSize: 18, color: Colors.blue),
-              ))
+            onPressed: () {
+              if (_imageFile.path != null &&
+                  _globalkey.currentState.validate()) {
+                showModalBottomSheet(
+                  context: context,
+                  builder: ((builder) => OverlayCard(
+                        imagefile: _imageFile,
+                        title: _title.text,
+                      )),
+                );
+              }
+            },
+            child: Text(
+              "Preview",
+              style: TextStyle(fontSize: 18, color: Colors.blue),
+            ),
+          )
         ],
       ),
       body: Form(
