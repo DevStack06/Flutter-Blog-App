@@ -73,8 +73,8 @@ class NetworkHandler {
     return baseurl + url;
   }
 
-  NetworkImage getImage(String username) {
-    String url = formater("/uploads//$username.jpg");
+  NetworkImage getImage(String imageName) {
+    String url = formater("/uploads//$imageName.jpg");
     return NetworkImage(url);
   }
 }

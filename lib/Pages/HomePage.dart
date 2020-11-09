@@ -20,7 +20,6 @@ class _HomePageState extends State<HomePage> {
   final storage = FlutterSecureStorage();
   NetworkHandler networkHandler = NetworkHandler();
   String username = "";
-
   Widget profilePhoto = Container(
     height: 100,
     width: 100,

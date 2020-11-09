@@ -1,3 +1,4 @@
+import 'package:blogapp/Blog/Blogs.dart';
 import 'package:blogapp/Model/profileModel.dart';
 import 'package:blogapp/NetworkHandler.dart';
 import 'package:flutter/material.dart';
@@ -62,6 +63,10 @@ class _MainProfileState extends State<MainProfile> {
                 Divider(
                   thickness: 0.8,
                 ),
+                SizedBox(
+                  height: 20,
+                ),
+                Blogs(),
               ],
             ),
     );
