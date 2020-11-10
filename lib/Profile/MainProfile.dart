@@ -66,7 +66,9 @@ class _MainProfileState extends State<MainProfile> {
                 SizedBox(
                   height: 20,
                 ),
-                Blogs(),
+                Blogs(
+                  url: "/blogpost/getOwnBlog",
+                ),
               ],
             ),
     );

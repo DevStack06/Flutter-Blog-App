@@ -1,12 +1,16 @@
 import 'dart:io';
 
+import 'package:blogapp/Model/addBlogModels.dart';
+import 'package:blogapp/NetworkHandler.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 class BlogCard extends StatelessWidget {
-  const BlogCard({
-    Key key,
-  }) : super(key: key);
+  const BlogCard({Key key, this.addBlogModel, this.networkHandler})
+      : super(key: key);
+
+  final AddBlogModel addBlogModel;
+  final NetworkHandler networkHandler;
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +25,7 @@ class BlogCard extends StatelessWidget {
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: FileImage(
-                    File(imagefile.path),
-                  ),
+                  image: networkHandler.getImage(addBlogModel.id),
                   fit: BoxFit.fitWidth),
             ),
           ),
@@ -36,7 +38,7 @@ class BlogCard extends StatelessWidget {
               decoration: BoxDecoration(
                   color: Colors.white, borderRadius: BorderRadius.circular(8)),
               child: Text(
-                title,
+                addBlogModel.title,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 15,

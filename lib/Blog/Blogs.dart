@@ -15,23 +15,32 @@ class Blogs extends StatefulWidget {
 class _BlogsState extends State<Blogs> {
   NetworkHandler networkHandler = NetworkHandler();
   SuperModel superModel = SuperModel();
+  List<AddBlogModel> data = [];
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    fetchData();
   }
 
   void fetchData() async {
     var response = await networkHandler.get(widget.url);
     superModel = SuperModel.fromJson(response);
+    setState(() {
+      data = superModel.data;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemBuilder: (BuildContext context, int index) => BlogCard(),
-      itemCount: superModel.data.length,
+    return Column(
+      children: data
+          .map((item) => BlogCard(
+                addBlogModel: item,
+                networkHandler: networkHandler,
+              ))
+          .toList(),
     );
   }
 }
