@@ -39,17 +39,27 @@
 <img src="https://github.com/DevStack06/images/blob/master/blog-app/homapage.png" width="350"></img>
 </p>
 <br>
-<h3  align="center" >6. Profile Screen </h3>
+<h3  align="center" >6. Add Profile Screen </h3>
+<p align="center">
+<img src="https://github.com/DevStack06/images/blob/master/blog-app/AddProfile.png" width="350"></img>
+</p>
+<br>
+<h3  align="center" >7. Create Profile Screen </h3>
+<p align="center">
+<img src="https://github.com/DevStack06/images/blob/master/blog-app/CreateProfile.png" width="350"></img>
+</p>
+<br>
+<h3  align="center" >8. Profile Screen </h3>
 <p align="center">
 <img src="https://github.com/DevStack06/images/blob/master/blog-app/profilePage.png" width="350"></img>
 </p>
 <br>
-<h3  align="center" >7. Drawer </h3>
+<h3  align="center" >9. Drawer </h3>
 <p align="center">
 <img src="https://github.com/DevStack06/images/blob/master/blog-app/drawer.png" width="350"></img>
 </p>
 <br>
-<h3  align="center" >8. Add Blog Page </h3>
+<h3  align="center" >10. Add Blog Page </h3>
 <p align="center">
 <img src="https://github.com/DevStack06/images/blob/master/blog-app/AddBlog.png" width="350"></img>
 </p>
