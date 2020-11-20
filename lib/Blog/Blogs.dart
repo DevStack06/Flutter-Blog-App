@@ -1,3 +1,4 @@
+import 'package:blogapp/Blog/Blog.dart';
 import 'package:blogapp/CustumWidget/BlogCard.dart';
 import 'package:blogapp/Model/SuperModel.dart';
 import 'package:blogapp/Model/addBlogModels.dart';
@@ -34,13 +35,30 @@ class _BlogsState extends State<Blogs> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: data
-          .map((item) => BlogCard(
-                addBlogModel: item,
-                networkHandler: networkHandler,
-              ))
-          .toList(),
-    );
+    return data.length > 0
+        ? Column(
+            children: data
+                .map((item) => Column(
+                      children: <Widget>[
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (contex) => Blog()));
+                          },
+                          child: BlogCard(
+                            addBlogModel: item,
+                            networkHandler: networkHandler,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                      ],
+                    ))
+                .toList(),
+          )
+        : Center(
+            child: Text("We don't have any Blog Yet"),
+          );
   }
 }

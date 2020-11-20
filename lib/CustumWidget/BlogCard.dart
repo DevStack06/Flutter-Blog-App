@@ -15,38 +15,42 @@ class BlogCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 200,
-      padding: EdgeInsets.all(5),
+      height: 300,
+      padding: EdgeInsets.all(15),
       width: MediaQuery.of(context).size.width,
-      child: Stack(
-        children: <Widget>[
-          Container(
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: networkHandler.getImage(addBlogModel.id),
-                  fit: BoxFit.fitWidth),
-            ),
-          ),
-          Positioned(
-            bottom: 2,
-            child: Container(
-              padding: EdgeInsets.all(8),
-              height: 55,
+      child: Card(
+        child: Stack(
+          children: <Widget>[
+            Container(
+              height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
-                  color: Colors.white, borderRadius: BorderRadius.circular(8)),
-              child: Text(
-                addBlogModel.title,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 15,
-                ),
+                image: DecorationImage(
+                    image: networkHandler.getImage(addBlogModel.id),
+                    fit: BoxFit.fitWidth),
               ),
             ),
-          )
-        ],
+            Positioned(
+              bottom: 2,
+              child: Container(
+                padding: EdgeInsets.all(8),
+                height: 60,
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(8)),
+                child: Text(
+                  addBlogModel.title,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15,
+                  ),
+                ),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
