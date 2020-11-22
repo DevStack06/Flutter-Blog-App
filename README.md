@@ -34,7 +34,7 @@
 <img src="https://github.com/DevStack06/images/blob/master/blog-app/SignUpPage.png" width="350"></img>
 </p>
 <br>
-<h3  align="center" >5. Home Screen (Development Mode) </h3>
+<h3  align="center" >5. Home Screen </h3>
 <p align="center">
 <img src="https://github.com/DevStack06/images/blob/master/blog-app/homapage.png" width="350"></img>
 </p>
