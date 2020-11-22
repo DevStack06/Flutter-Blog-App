@@ -36,7 +36,7 @@
 <br>
 <h3  align="center" >5. Home Screen </h3>
 <p align="center">
-<img src="https://github.com/DevStack06/images/blob/master/blog-app/homapage.png" width="350"></img>
+<img src="https://github.com/DevStack06/images/blob/master/blog-app/homepage.png" width="350"></img>
 </p>
 <br>
 <h3  align="center" >6. Add Profile Screen </h3>
