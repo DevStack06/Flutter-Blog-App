@@ -41,6 +41,21 @@ class NetworkHandler {
     return response;
   }
 
+  Future<http.Response> patch(String url, Map<String, String> body) async {
+    String token = await storage.read(key: "token");
+    url = formater(url);
+    log.d(body);
+    var response = await http.patch(
+      url,
+      headers: {
+        "Content-type": "application/json",
+        "Authorization": "Bearer $token"
+      },
+      body: json.encode(body),
+    );
+    return response;
+  }
+
   Future<http.Response> post1(String url, var body) async {
     String token = await storage.read(key: "token");
     url = formater(url);

@@ -1,21 +1,21 @@
 import 'dart:convert';
 
-import 'package:blogapp/Pages/ForgetPassword.dart';
 import 'package:blogapp/Pages/HomePage.dart';
 import 'package:blogapp/Pages/SignUpPage.dart';
+import 'package:blogapp/Pages/WelcomePage.dart';
 import "package:flutter/material.dart";
 
 import '../NetworkHandler.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
-class SignInPage extends StatefulWidget {
-  SignInPage({Key key}) : super(key: key);
+class ForgotPasswordPage extends StatefulWidget {
+  ForgotPasswordPage({Key key}) : super(key: key);
 
   @override
-  _SignInPageState createState() => _SignInPageState();
+  _ForgotPasswordPageState createState() => _ForgotPasswordPageState();
 }
 
-class _SignInPageState extends State<SignInPage> {
+class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   bool vis = true;
   final _globalkey = GlobalKey<FormState>();
   NetworkHandler networkHandler = NetworkHandler();
@@ -48,7 +48,7 @@ class _SignInPageState extends State<SignInPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Sign In with Email",
+                  "Forgot Password",
                   style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
@@ -66,83 +66,27 @@ class _SignInPageState extends State<SignInPage> {
                 SizedBox(
                   height: 20,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ForgotPasswordPage()));
-                      },
-                      child: Text(
-                        "Forgot Password ?",
-                        style: TextStyle(
-                          color: Colors.blue,
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                    SizedBox(width: 20),
-                    InkWell(
-                      onTap: () {
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => SignUpPage()));
-                      },
-                      child: Text(
-                        "New User?",
-                        style: TextStyle(
-                          color: Colors.blue[900],
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+
                 SizedBox(
                   height: 30,
                 ),
                 InkWell(
                   onTap: () async {
-                    setState(() {
-                      circular = true;
-                    });
-
-                    //Login Logic start here
                     Map<String, String> data = {
-                      "username": _usernameController.text,
-                      "password": _passwordController.text,
+                      "password": _passwordController.text
                     };
-                    var response =
-                        await networkHandler.post("/user/login", data);
+                    print("/user/update/${_usernameController.text}");
+                    var response = await networkHandler.patch(
+                        "/user/update/${_usernameController.text}", data);
 
                     if (response.statusCode == 200 ||
                         response.statusCode == 201) {
-                      Map<String, dynamic> output = json.decode(response.body);
-                      print(output["token"]);
-                      await storage.write(key: "token", value: output["token"]);
-                      setState(() {
-                        validate = true;
-                        circular = false;
-                      });
+                      print("/user/update/${_usernameController.text}");
                       Navigator.pushAndRemoveUntil(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => HomePage(),
-                          ),
+                              builder: (context) => WelcomePage()),
                           (route) => false);
-                    } else {
-                      String output = json.decode(response.body);
-                      setState(() {
-                        validate = false;
-                        errorText = output;
-                        circular = false;
-                      });
                     }
 
                     // login logic End here
@@ -158,10 +102,10 @@ class _SignInPageState extends State<SignInPage> {
                       child: circular
                           ? CircularProgressIndicator()
                           : Text(
-                              "Sign In",
+                              "Update Password",
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 18,
+                                fontSize: 15,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
