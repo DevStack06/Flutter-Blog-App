@@ -10,14 +10,12 @@ class Blog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Colors.black,
       body: ListView(
         children: [
           Container(
-            height: 310,
+            height: 365,
             width: MediaQuery.of(context).size.width,
             child: Card(
-              // margin: EdgeInsets.all(0),
               elevation: 8,
               child: Column(
                 children: [
@@ -25,27 +23,87 @@ class Blog extends StatelessWidget {
                     height: 230,
                     width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
-                      color: Colors.black,
                       image: DecorationImage(
                         image: networkHandler.getImage(addBlogModel.id),
                         fit: BoxFit.fill,
                       ),
                     ),
                   ),
-                  // SizedBox()
-                  Container(
+                  Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 20, vertical: 10),
                     child: Text(
                       addBlogModel.title,
-                      textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 10),
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.chat_bubble,
+                          size: 18,
+                        ),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Text(
+                          addBlogModel.comment.toString(),
+                          style: TextStyle(fontSize: 15),
+                        ),
+                        SizedBox(
+                          width: 15,
+                        ),
+                        Icon(
+                          Icons.thumb_up,
+                          size: 18,
+                        ),
+                        SizedBox(
+                          width: 8,
+                        ),
+                        Text(
+                          addBlogModel.count.toString(),
+                          style: TextStyle(fontSize: 15),
+                        ),
+                        SizedBox(
+                          width: 15,
+                        ),
+                        Icon(
+                          Icons.share,
+                          size: 18,
+                        ),
+                        SizedBox(
+                          width: 8,
+                        ),
+                        Text(
+                          addBlogModel.share.toString(),
+                          style: TextStyle(fontSize: 15),
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Container(
+            width: MediaQuery.of(context).size.width,
+            child: Card(
+              elevation: 15,
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 15,
+                ),
+                child: Text(addBlogModel.body),
               ),
             ),
           ),
