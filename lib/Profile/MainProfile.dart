@@ -32,6 +32,7 @@ class _MainProfileState extends State<MainProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xffEEEEFF),
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white10,

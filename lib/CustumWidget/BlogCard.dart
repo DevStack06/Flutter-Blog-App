@@ -15,8 +15,8 @@ class BlogCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 300,
-      padding: EdgeInsets.all(15),
+      height: 280,
+      padding: EdgeInsets.symmetric(horizontal: 13, vertical: 8),
       width: MediaQuery.of(context).size.width,
       child: Card(
         child: Stack(
@@ -27,15 +27,15 @@ class BlogCard extends StatelessWidget {
               decoration: BoxDecoration(
                 image: DecorationImage(
                     image: networkHandler.getImage(addBlogModel.id),
-                    fit: BoxFit.fitWidth),
+                    fit: BoxFit.fill),
               ),
             ),
             Positioned(
               bottom: 2,
               child: Container(
-                padding: EdgeInsets.all(8),
+                padding: EdgeInsets.all(7),
                 height: 60,
-                width: MediaQuery.of(context).size.width,
+                width: MediaQuery.of(context).size.width - 30,
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(8)),
