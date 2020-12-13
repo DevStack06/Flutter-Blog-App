@@ -39,29 +39,39 @@
 <img src="https://github.com/DevStack06/images/blob/master/blog-app/homepage.png" width="350"></img>
 </p>
 <br>
-<h3  align="center" >6. Add Profile Screen </h3>
+<h3  align="center" > 6. View Blog Page </h3>
+<p align="center">
+<img src="https://github.com/DevStack06/images/blob/master/blog-app/VievBlogPage.png" width="350"></img>
+</p>
+<br>
+<h3  align="center" >7. Add Profile Screen </h3>
 <p align="center">
 <img src="https://github.com/DevStack06/images/blob/master/blog-app/AddProfile.png" width="350"></img>
 </p>
 <br>
-<h3  align="center" >7. Create Profile Screen </h3>
+<h3  align="center" >8. Create Profile Screen </h3>
 <p align="center">
 <img src="https://github.com/DevStack06/images/blob/master/blog-app/CreateProfile.png" width="350"></img>
 </p>
 <br>
-<h3  align="center" >8. Profile Screen </h3>
+<h3  align="center" >9. Profile Screen </h3>
 <p align="center">
 <img src="https://github.com/DevStack06/images/blob/master/blog-app/profilePage.png" width="350"></img>
 </p>
 <br>
-<h3  align="center" >9. Drawer </h3>
+<h3  align="center" >10. Drawer </h3>
 <p align="center">
 <img src="https://github.com/DevStack06/images/blob/master/blog-app/drawer.png" width="350"></img>
 </p>
 <br>
-<h3  align="center" >10. Add Blog Page </h3>
+<h3  align="center" >11. Add Blog Page </h3>
 <p align="center">
 <img src="https://github.com/DevStack06/images/blob/master/blog-app/AddBlog.png" width="350"></img>
+</p>
+<br>
+<h3  align="center" >12. Forgot Password </h3>
+<p align="center">
+<img src="https://github.com/DevStack06/images/blob/master/blog-app/forgetPassword.png" width="350"></img>
 </p>
 <br>
 
