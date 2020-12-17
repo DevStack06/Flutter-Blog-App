@@ -17,11 +17,8 @@
 | Flutter model class series, for Rest API connection and JSON parsing |     | [Link](https://www.youtube.com/playlist?list=PLtIU0BH0pkKpXE-1vC7NswofFPby1OYh-) |
 | Flutter Basic series                                                 |     | [link](https://www.youtube.com/playlist?list=PLtIU0BH0pkKrk8C7KToFeRSVTi2CLpFTG) |
 
-<br>
+<span class="bg-green-light mb-2"> **_If this tutorial helped you please give a star and also fork the repo, Thank you happy coding :)_**</span>.
 
-### **If this tutorial helped you please give a star and also fork the repo, Thank you happy coding :)**
-
-<br>
 <h2> This app have following things -:</h2>
 
 <h3 align="center" style="color:green" >1. Welcome Page</h3>
