@@ -2,17 +2,27 @@
 
 ### Playlist for Blog App Development series -:
 
-1. The main playlist (Both Front-End and Back-End) [Link](https://www.youtube.com/watch?v=T35T8nzyRDI&list=PLtIU0BH0pkKoE2PBvgbHEBPAP-sd670VI)
-2. The Front-End Playlist (Flutter only) [Link](https://www.youtube.com/watch?v=6VCLeHRnixg&list=PLtIU0BH0pkKpitsp5jzt-yDAoXAFBkcPb)
-3. The Back-End Playlist (NodeJs/ExpressJs) [Link](https://www.youtube.com/watch?v=T35T8nzyRDI&list=PLtIU0BH0pkKqypuOtDhcXZ4oATJfji49r)
+| Playlist Name                                             |     | YouTube Playlist Link                                                                       |
+| --------------------------------------------------------- | --- | ------------------------------------------------------------------------------------------- |
+| Blog App Development (Main Playlist)                      |     | [Link](https://youtube.com/playlist?list=PLtIU0BH0pkKoE2PBvgbHEBPAP-sd670VI)                |
+| Blog App Development (Only Front-End using Flutter)       |     | [Link](https://www.youtube.com/watch?v=6VCLeHRnixg&list=PLtIU0BH0pkKpitsp5jzt-yDAoXAFBkcPb) |
+| Blog App Development (Only Back-End using Node/ExpressJs) |     | [Link](https://www.youtube.com/watch?v=T35T8nzyRDI&list=PLtIU0BH0pkKqypuOtDhcXZ4oATJfji49r) |
+
+<br>
 
 ### Some Other playlist
 
-1. Flutter model class series, for Rest API connection and JSON parsing. [Link](https://www.youtube.com/playlist?list=PLtIU0BH0pkKpXE-1vC7NswofFPby1OYh-)
+| Playlist Name                                                        |     | YouTube Playlist Link                                                            |
+| -------------------------------------------------------------------- | --- | -------------------------------------------------------------------------------- |
+| Flutter model class series, for Rest API connection and JSON parsing |     | [Link](https://www.youtube.com/playlist?list=PLtIU0BH0pkKpXE-1vC7NswofFPby1OYh-) |
+| Flutter Basic series                                                 |     | [link](https://www.youtube.com/playlist?list=PLtIU0BH0pkKrk8C7KToFeRSVTi2CLpFTG) |
 
-2. Flutter Basic series [link](https://www.youtube.com/playlist?list=PLtIU0BH0pkKrk8C7KToFeRSVTi2CLpFTG)
+<br>
 
-### This app have following things -:
+### **If this tutorial helped you please give a star and also fork the repo, Thank you happy coding :)**
+
+<br>
+<h2> This app have following things -:</h2>
 
 <h3 align="center" style="color:green" >1. Welcome Page</h3>
  <p align="center">
@@ -88,5 +98,3 @@ Above command will install all the neccery packges.
 
 3. Run the app on your mobile using below command -:
    > flutter run
-
-**If this tutorial helping you please give star and also fork the repo, Thank you happy coding :)**
